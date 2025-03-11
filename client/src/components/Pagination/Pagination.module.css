@@ -1,0 +1,32 @@
+/* Pagination.module.css */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-medium);
+}
+
+.pageButton {
+  background: none;
+  color: var(--color-secondary);
+  border: none;
+  padding: var(--spacing-small) 16px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.activePageButton {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.pageButton:hover {
+  /* background-color: var(--color-light-gray); */
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

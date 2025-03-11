@@ -1,0 +1,23 @@
+/* DescriptionSection.module.css */
+.bottomSection {
+    font-size: var(--font-size-base);
+    background-color: var(--color-dark-2);
+    border-top: 1px solid var(--color-line);
+    border-radius: 0 0 var(--radius-small) var(--radius-small);
+    padding: var(--spacing-large);
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    max-height: 0;
+  }
+  
+  .bottomSectionOpen {
+    margin-top: calc(var(--spacing-small) * -1);
+    max-height: 300px;
+    opacity: 1;
+  }
+  
+  .description {
+    color: var(--color-muted);
+    font-weight: var(--font-weight-light);
+  }

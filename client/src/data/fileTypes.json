@@ -1,0 +1,13 @@
+{
+  "fileTypes": [
+    "Archive File",
+    "Audio",
+    "Image",
+    "PDF",
+    "Script",
+    "Slide",
+    "Spreadsheet",
+    "Video", 
+    "Word Document"
+  ]
+}

@@ -1,0 +1,169 @@
+.container {
+    background-color: var(--color-white);
+    border-radius: var(--radius-small);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+  
+  .content {
+    flex-grow: 1;
+  }
+  
+  .modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-large);
+  }
+
+  .modalHeader {
+    font-size: var(--font-size-base);
+  }
+
+  
+  .dropContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed var(--color-line);
+    border-radius: var(--radius-small);
+    height: 100px;
+    padding: var(--spacing-large);
+    text-align: center;
+    margin-bottom: var(--spacing-small);
+    cursor: pointer;
+  }
+  
+  .dropMessage {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+  }
+  
+  .fileInput {
+    display: none;
+  }
+  
+  .supportedInfo {
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-light);
+    color: var(--color-muted);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-large);
+  }
+  
+  .fileDisplayContainer {
+    margin-top: var(--spacing-large);
+  }
+  
+  .fileStatusBar {
+    background-color: var(--color-light-gray);
+    border-radius: var(--radius-small);
+    padding: var(--spacing-medium);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .fileInfo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-small);
+    font-size: var(--font-size-small);
+  }
+  
+  .fileTypeLogo {
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-white);
+    border-radius: var(--radius-small);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-small);
+    margin-right: var(--spacing-small);
+  }
+  
+  .fileDetails {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .fileName {
+    margin-right: var(--spacing-small);
+    font-weight: var(--font-weight-medium);
+  }
+  
+  .fileSize {
+    font-size: var(--font-size-small);
+  }
+  
+  .fileRemove {
+    cursor: pointer;
+    color: red;
+    margin-left: auto;
+  }
+  
+  .progressContainer {
+    background-color: var(--color-white);
+    border-radius: var(--radius-small);
+    height: 10px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .progress {
+    background-color: var(--color-primary);
+    height: 100%;
+    width: 0;
+    border-radius: var(--radius-small);
+  }
+  
+  .progressPercentage {
+    position: absolute;
+    right: var(--spacing-small);
+    top: -20px;
+    font-size: 0.8em;
+    color: var(--color-primary);
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modalImage {
+    background: rgba(0, 0, 0, 0.8);
+    padding: var(--spacing-large);
+    position: relative;
+  }
+  
+  .modalImageContent {
+    background: var(--color-white);
+    padding: var(--spacing-large);
+    border-radius: var(--radius-small);
+    position: relative;
+  }
+  
+  .modalOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .buttonsContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--spacing-large);
+    margin-top: auto; /* Pushes the buttons to the bottom */
+  }

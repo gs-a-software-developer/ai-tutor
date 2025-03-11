@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "type": "video",
+    "fileType": "Video",
+    "name": "Introduction to Programming",
+    "author": "Dr. John Doe",
+    "date": "2024-08-10",
+    "faculty": "ICT",
+    "moduleCode": "MAD115C",
+    "theme": "Software Development",
+    "description": "This video provides an introduction to programming concepts, including variables, control structures, and basic data structures."
+  },
+  {
+    "id": 2,
+    "type": "document",
+    "fileType": "Document",
+    "name": "General Physics Study Guide",
+    "author": "Prof. Jane Smith",
+    "date": "2024-08-12",
+    "faculty": "SCI",
+    "moduleCode": "PHY101",
+    "theme": "Data Analysis",
+    "description": "A comprehensive study guide covering the key concepts of general physics, including mechanics, thermodynamics, and electromagnetism."
+  },
+  {
+    "id": 3,
+    "type": "image",
+    "fileType": "Image",
+    "name": "Art History Visuals",
+    "author": "Dr. Emily Brown",
+    "date": "2024-08-14",
+    "faculty": "ARTS",
+    "moduleCode": "ART204",
+    "theme": "Web Development",
+    "description": "A collection of images that depict important artworks from different periods in art history, ideal for visual reference and analysis."
+  },
+  {
+    "id": 4,
+    "type": "video",
+    "fileType": "Video",
+    "name": "Advanced Computer Science Lecture",
+    "author": "Dr. Michael Green",
+    "date": "2024-08-16",
+    "faculty": "ICT",
+    "moduleCode": "CSC301",
+    "theme": "Artificial Intelligence",
+    "description": "This lecture delves into advanced topics in computer science, focusing on algorithms, data structures, and AI principles."
+  },
+  {
+    "id": 5,
+    "type": "document",
+    "fileType": "Document",
+    "name": "Calculus II Notes",
+    "author": "Prof. Lisa White",
+    "date": "2024-08-18",
+    "faculty": "SCI",
+    "moduleCode": "MTH202",
+    "theme": "Machine Learning",
+    "description": "Detailed notes covering the second part of calculus, including integrals, differential equations, and applications in machine learning."
+  }
+]

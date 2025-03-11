@@ -1,0 +1,50 @@
+{
+  "faculties": ["ICT", "HUM", "ARTS", "SCI", "BUS", "LAW", "MED"],
+  "moduleCodes": [
+    "MAD115C - Introduction to Programming",
+    "PHY101 - General Physics",
+    "ART204 - Art History",
+    "CSC301 - Advanced Computer Science",
+    "MTH202 - Calculus II",
+    "BIO310 - Genetics",
+    "ECO102 - Microeconomics"
+  ],
+  "themes": [
+    "Software Development",
+    "Web Development",
+    "Health Science",
+    "Data Analysis",
+    "Machine Learning",
+    "Artificial Intelligence",
+    "Cyber Security",
+    "Network Systems"
+  ],
+  "contentTypes": [
+    "Lecture Notes",
+    "Textbook",
+    "Study Guides",
+    "Homework Assignments",
+    "Tests",
+    "Coding Tutorials",
+    "Code Snippets",
+    "Recorded Lectures",
+    "Video Tutorials",
+    "Podcasts or Audio Clips",
+    "Research Papers",
+    "Infographics",
+    "Flash Cards"
+  ],
+  "fileTypes": [
+    "3D Models",
+    "Archive Files",
+    "Audio",
+    "Executable Files",
+    "Images",
+    "PDFs",
+    "Scripts",
+    "Slides",
+    "Spreadsheets",
+    "Videos",
+    "Word Documents"
+  ]
+}

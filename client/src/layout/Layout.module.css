@@ -1,0 +1,36 @@
+/* Layout.module.css */
+.container {
+  display: flex;
+  height: 100vh;
+  background-color: #0046cf;
+}
+
+.center {
+  display: flex;
+  flex: 1;
+  margin: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  overflow: hidden;
+  height: calc(100vh - 40px);
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 300px;
+  background-color: #f7f7f7;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.centeredContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

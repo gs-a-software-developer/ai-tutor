@@ -1,0 +1,37 @@
+/* FileList.module.css */
+.fileList {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.fileList::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.fileList {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.fileItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-medium);
+}
+
+.checkbox {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  transition: background-color 0.3s, border-color 0.3s;
+  appearance: none;
+  position: relative;
+}
+
+.checkbox:checked {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}

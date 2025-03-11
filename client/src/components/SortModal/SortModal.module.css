@@ -1,0 +1,199 @@
+/* SortModal.module.css */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 69, 207, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: var(--color-white);
+  border-radius: var(--radius-medium);
+  width: 100%;
+  width: 450px;
+  height: 450px;
+  padding: var(--spacing-large);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+  align-items: flex-start;
+  position: relative;
+  font-size: var(--font-size-small);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: var(--spacing-small);
+}
+
+.modalTitle {
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-dark);
+}
+
+.closeButton {
+  background: transparent;
+  border: none;
+  color: var(--color-dark);
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  color: var(--color-muted);
+}
+
+.dropdownGroup {
+  display: flex;
+  gap: var(--spacing-small);
+  width: 100%;
+}
+
+.dropdownContainer {
+  width: 100%;
+  flex: 1;
+}
+
+.dropdownHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: var(--spacing-small);
+  border: 1px solid var(--color-light-gray);
+  border-radius: var(--radius-small);
+  background-color: var(--color-white);
+}
+
+.dropdownList {
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: auto;
+  width: 100%;
+}
+
+/* Custom scrollbar styles */
+.dropdownList::-webkit-scrollbar {
+  width: 2px;
+}
+
+.dropdownList::-webkit-scrollbar-track {
+  background: var(--color-light-gray);
+  border-radius: 2px;
+}
+
+.dropdownList::-webkit-scrollbar-thumb {
+  background: var(--color-muted);
+  border-radius: 2px;
+}
+
+.dropdownList::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dark);
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  padding: var(--spacing-small) 0;
+}
+
+.dropdownItem:hover {
+  background-color: var(--color-text);
+}
+
+.checkbox,
+.radio {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  margin-right: var(--spacing-small);
+  background-color: var(--color-text);
+  border: none;
+  display: grid;
+  place-items: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.checkbox {
+  border-radius: var(--radius-small);
+}
+
+.radio {
+  border-radius: 50%;
+}
+
+.checkbox:checked,
+.radio:checked {
+  border-color: var(--color-secondary-2);
+}
+
+.checkbox:checked::after,
+.radio:checked::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  background-color: var(--color-secondary);
+  border-radius: 50%;
+}
+
+.checkbox:checked::after {
+  border-radius: var(--radius-small);
+}
+
+.clearAllButton {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: var(--spacing-small) var(--spacing-medium);
+  background: none;
+  cursor: pointer;
+  color: var(--color-secondary);
+  border-radius: 0 0 var(--radius-small) var(--radius-small);
+  border: 0;
+  outline: 0;
+}
+
+.clearAllButton:hover {
+  text-decoration: underline;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end; /* Aligns the button to the right */
+  width: 100%;
+  margin-top: auto; /* Pushes the footer to the bottom */
+  padding-top: var(--spacing-small); /* Adds some spacing above the button */
+}
+
+.clearButton {
+  background-color: rgba(218, 38, 62, 0.1);
+  color: #DA263E;
+  font-size: var(--font-size-small);
+  padding: var(--spacing-small) var(--spacing-medium);
+  border: none;
+  border-radius: var(--radius-small);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.clearButton:hover {
+  background-color: rgba(218, 38, 62, 0.2); /* Slightly darker on hover */
+}
