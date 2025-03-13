@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
-import { Gauge, User, Stack, Gear, SignOut } from "@phosphor-icons/react";
+import { SquaresFour, User, Stack, Gear, SignOut } from "@phosphor-icons/react";
 import { upgrade } from "../../assets";
 import styles from "./Navbar.module.css";
 
@@ -36,6 +36,8 @@ const UpgradeSection = () => (
 const Navbar = () => {
   const upperMenuItems = [
     // { to: "/ai-tutor", icon: Gauge, label: "Dashboard" },
+    
+    { to: "/ai-tutor/modules", icon: SquaresFour, label: "Modules" },
     { to: "/ai-tutor/files", icon: Stack, label: "Files" },
     { to: "/ai-tutor/profile", icon: User, label: "Profile" },
   ];

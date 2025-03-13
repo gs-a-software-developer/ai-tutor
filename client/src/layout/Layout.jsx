@@ -1,4 +1,5 @@
 // Layout.js
+import React, { useState } from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
@@ -7,21 +8,19 @@ import Welcome from "../components/Welcome/Welcome";
 import Navbar from "../components/Navbar/Navbar";
 import Role from "../components/Role/Role";
 import UploadFiles from "../components/UploadFiles/UploadFiles"; // Shared sidebar component
-import Dashboard from "../components/Dashboard/Dashboard";
 import Profile from "../pages/Profile/Profile";
 import Settings from "../pages/Settings/Settings";
 import Files from "../components/Files/Files";
+import Modules from "../pages/Modules/Modules";
 import styles from "./Layout.module.css";
+
+import ModuleFiles from "../components/ModuleFiles/ModuleFiles";
+import Contents from "../pages/Contents/Contents";
 
 // Function to determine sidebar content
 const getSidebarComponent = (path) => {
   if (path.startsWith("/authentication")) return <Role />;
-  if (
-    path.startsWith("/ai-tutor") ||
-    path.startsWith("/ai-tutor/profile") ||
-    path.startsWith("/ai-tutor/files") || 
-    path.startsWith("/ai-tutor/settings")
-  ) {
+  if (path.startsWith("/ai-tutor/modules/")) {
     return <UploadFiles />;
   }
   return null;
@@ -30,6 +29,7 @@ const getSidebarComponent = (path) => {
 const Layout = () => {
   const { pathname } = useLocation();
   const isAuthPage = pathname.startsWith("/authentication");
+  const [selectedFiles, setSelectedFiles] = useState([]);
 
   return (
     <div className={styles.container}>
@@ -44,10 +44,14 @@ const Layout = () => {
             <Route path="authentication" element={<Authentication />}>
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
-            </Route>
+            </Route> 
 
             {/* Other Routes */}
-            {/* <Route path="/ai-tutor" element={<Dashboard />} /> */}
+            <Route path="/ai-tutor/modules" element={<Modules />} />
+            <Route
+              path="/ai-tutor/modules/:moduleName"
+              element={<ModuleFiles onSelectFiles={setSelectedFiles} />}
+            />
             <Route path="/ai-tutor/files" element={<Files />} />
             <Route path="/ai-tutor/profile" element={<Profile />} />
             <Route path="/ai-tutor/settings" element={<Settings />}/>

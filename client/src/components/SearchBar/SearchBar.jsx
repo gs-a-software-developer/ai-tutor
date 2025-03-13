@@ -7,16 +7,8 @@ import styles from "./SearchBar.module.css";
 const SearchBar = ({
   searchTerm,
   onSearchChange,
-  onDelete,
   onSortModalOpen,
-  selectedFiles = [],
 }) => {
-  const [showCheckboxes, setShowCheckboxes] = useState(false);
-
-  const handleDeleteClick = () => {
-    setShowCheckboxes(!showCheckboxes);
-    onDelete();
-  };
 
   return (
     <div className={styles.header}>

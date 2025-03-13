@@ -1,0 +1,7 @@
+/* Modules.module.css */
+.title {
+  font-size: var(--font-size-large);
+  margin-bottom: var(--spacing-medium);
+  color: var(--color-dark);
+  font-weight: var(--font-weight-medium);
+}

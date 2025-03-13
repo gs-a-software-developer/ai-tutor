@@ -1,14 +1,15 @@
-// Files.jsx
+// ModuleFiles.jsx
 import React from "react";
+import { useParams } from "react-router-dom";
 import withFiles from "../../hoc/withFiles";
 import FileList from "../FileList/FileList";
 import Pagination from "../Pagination/Pagination";
 import SearchBar from "../SearchBar/SearchBar";
 import SortModal from "../SortModal/SortModal";
 import fileTypesData from "../../data/fileTypes.json";
-import styles from "./Files.module.css";
+import styles from "./ModuleFiles.module.css";
 
-const Files = ({
+const ModuleFiles = ({
   files,
   searchTerm,
   sortOption,
@@ -30,9 +31,12 @@ const Files = ({
   totalPages,
   filteredFiles,
 }) => {
+  const { moduleName } = useParams();
+console.log("Module Name:", moduleName); // Debugging
+
   return (
     <div className={styles.container}>
-      <h1 className={"heading-1"}>Files</h1>
+      <h1 className={styles.title}>{moduleName || "Module"}</h1>
       <SearchBar
         searchTerm={searchTerm}
         onSearchChange={(e) => handleSortOptionChange(e.target.value)}
@@ -72,4 +76,4 @@ const Files = ({
   );
 };
 
-export default withFiles(Files);
+export default withFiles(ModuleFiles);

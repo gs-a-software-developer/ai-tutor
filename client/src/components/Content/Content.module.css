@@ -1,0 +1,106 @@
+/* Content.module.css */
+.contentWrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .checkboxContainer {
+    width: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 1px;
+  }
+  
+  .checkbox {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+  
+  .moduleContainer {
+    display: flex;
+    align-items: stretch;
+    border: 0.1px solid var(--color-line-2);
+    background-color: var(--color-white);
+    border-radius: var(--radius-small);
+    padding: var(--spacing-small);
+    margin-bottom: var(--spacing-small);
+    gap: var(--spacing-small);
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    flex: 1;
+  }
+  
+  .moduleContainer.selected {
+    border-color: var(--color-secondary);
+  }
+  
+  .leftBar {
+    width: 5px;
+    background-color: var(--color-muted);
+    border-radius: var(--radius-small);
+  }
+  
+  .content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-medium);
+  }
+  
+  .iconContainer {
+    padding: var(--spacing-small);
+    border-radius: var(--radius-small);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .moduleInfo {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+  }
+  
+  .moduleName,
+  .moduleCode {
+    color: var(--color-dark);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-base);
+  }
+  
+  .subtopic {
+    font-size: var(--font-size-small);
+    color: var(--color-muted);
+    margin-top: 2.5px;
+    font-weight: var(--font-weight-light);
+  }
+  
+  .checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    margin-right: var(--spacing-small);
+    border: 0.1px solid var(--color-line-2);
+    background-color: var(--color-white);
+    display: grid;
+    place-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: var(--radius-xs);
+  }
+  
+  .checkbox:checked {
+    background-color: var(--color-secondary-2);
+    border: none;
+  }
+  
+  .checkbox:checked::after {
+    content: "";
+    width: 9px;
+    height: 9px;
+    background-color: var(--color-secondary);
+    border-radius: 2px;
+    border: none;
+  }

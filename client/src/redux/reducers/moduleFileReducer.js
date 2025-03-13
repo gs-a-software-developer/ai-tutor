@@ -1,4 +1,4 @@
-// fileReducer.js
+// moduleFileReducer.js
 import {
   FETCH_FILES_REQUEST,
   FETCH_FILES_SUCCESS,
@@ -26,7 +26,7 @@ const initialState = {
   selectedCategory: "",
 };
 
-const fileReducer = (state = initialState, action) => {
+const moduleFileReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_FILES_REQUEST:
       return { ...state, loading: true, error: null };
@@ -62,4 +62,4 @@ const fileReducer = (state = initialState, action) => {
   }
 };
 
-export default fileReducer;
+export default moduleFileReducer;

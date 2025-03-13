@@ -1,0 +1,30 @@
+[
+  {
+    "moduleName": "Information Systems",
+    "moduleCode": "ISY23BT",
+    "moduleDescription": "An introduction to information systems and their applications in business. This course covers various aspects of information systems including their role in business processes and decision-making.",
+    "moduleColor": "#F48FFA",
+    "image": "content1.png"
+  },
+  {
+    "moduleName": "Computer Science",
+    "moduleCode": "CSC101",
+    "moduleDescription": "Fundamentals of computer science including algorithms and programming. This module provides an overview of basic concepts in computer science and programming practices.",
+    "moduleColor": "#61A5F3",
+    "image": "content2.png"
+  },
+  {
+    "moduleName": "Mathematics for Computing",
+    "moduleCode": "MTH120",
+    "moduleDescription": "Mathematical concepts and techniques used in computer science. Includes topics such as linear algebra, calculus, and discrete mathematics relevant to computing.",
+    "moduleColor": "#8E6CDB",
+    "image": "content3.png"
+  },
+  {
+    "moduleName": "Data Structures and Algorithms",
+    "moduleCode": "DSA215",
+    "moduleDescription": "Study of data structures and algorithms for efficient data processing. Focuses on algorithm design, data structure implementation, and complexity analysis.",
+    "moduleColor": "#B6C1D6",
+    "image": "content4.png"
+  }
+]

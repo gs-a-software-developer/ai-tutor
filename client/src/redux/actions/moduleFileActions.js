@@ -1,4 +1,4 @@
-// fileActions.js
+// moduleFileActions.js
 import {
   FETCH_FILES_REQUEST,
   FETCH_FILES_SUCCESS,
@@ -15,9 +15,9 @@ import {
   DELETE_FILES_FAILURE,
 } from "../types";
 
-import moduleFilesData from '../../data/moduleFilesData.json';
+import filesData from '../../data/moduleFilesData.json';
 
-// Fetch files for a specific module or all files
+// Fetch files for a specific module
 export const fetchFiles = (moduleName) => {
   return async (dispatch) => {
     dispatch(fetchFilesRequest());
@@ -25,14 +25,9 @@ export const fetchFiles = (moduleName) => {
       // Simulate an API call with a delay
       const response = await new Promise((resolve) => {
         setTimeout(() => {
-          let data = [];
-          if (moduleName) {
-            data = moduleFilesData[moduleName] || [];
-          } else {
-            data = Object.values(moduleFilesData).flat();
-          }
-          console.log("Fetched Data:", data); // Debugging
-          resolve(data);
+          // Filter files by moduleName
+          const filesForModule = filesData[moduleName] || [];
+          resolve(filesForModule);
         }, 1000);
       });
       dispatch(fetchFilesSuccess(response));
@@ -40,7 +35,7 @@ export const fetchFiles = (moduleName) => {
       dispatch(fetchFilesFailure(error.message));
     }
   };
-}
+};
 
 // Delete files
 export const deleteFiles = (fileIds) => {

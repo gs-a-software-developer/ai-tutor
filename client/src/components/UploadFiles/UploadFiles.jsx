@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadFile } from '../../redux/actions/uploadActions';
-import { Video, FileText, Image } from "@phosphor-icons/react";
+import { Video, FileText, Image, Code } from "@phosphor-icons/react";
 import AddFile from '../AddFile/AddFile';
 import styles from './UploadFiles.module.css';
 
@@ -80,6 +80,12 @@ const UploadFiles = () => {
           label="Documents"
           isActive={activeIcon === 'documents'}
           onClick={(e) => handleIconClick('documents', e)}
+        />
+        <IconButton
+          icon={Code}
+          label="Scripts"
+          isActive={activeIcon === 'scripts'}
+          onClick={(e) => handleIconClick('scripts', e)}
         />
       </div>
       <button

@@ -2,7 +2,7 @@
 import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { CaretCircleDown, CaretCircleUp, Video, FileText, Image, Trash } from "@phosphor-icons/react";
-import DeleteModal from "../DeleteModal/DeleteModal"; // Import the modal
+import DeleteModal from "../DeleteModal/DeleteModal";
 import styles from "./File.module.css";
 
 // Constants for reusable values
