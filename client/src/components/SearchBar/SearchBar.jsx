@@ -1,5 +1,4 @@
-// SearchBar.js
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Sliders, TrashSimple } from "@phosphor-icons/react";
 import styles from "./SearchBar.module.css";
@@ -7,9 +6,11 @@ import styles from "./SearchBar.module.css";
 const SearchBar = ({
   searchTerm,
   onSearchChange,
+  onSelectAllChange,
+  isAllSelected,
+  onDelete,
   onSortModalOpen,
 }) => {
-
   return (
     <div className={styles.header}>
       <input
@@ -36,13 +37,10 @@ const SearchBar = ({
 SearchBar.propTypes = {
   searchTerm: PropTypes.string.isRequired,
   onSearchChange: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
   onSortModalOpen: PropTypes.func.isRequired,
-  selectedFiles: PropTypes.array.isRequired,
-};
-
-SearchBar.defaultProps = {
-  selectedFiles: [],
+  onDelete: PropTypes.func.isRequired,
+  isAllSelected: PropTypes.bool.isRequired,
+  onSelectAllChange: PropTypes.func.isRequired,
 };
 
 export default React.memo(SearchBar);

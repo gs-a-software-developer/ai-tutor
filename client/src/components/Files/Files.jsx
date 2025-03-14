@@ -1,75 +1,100 @@
-// Files.jsx
-import React from "react";
-import withFiles from "../../hoc/withFiles";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import FileList from "../FileList/FileList";
 import Pagination from "../Pagination/Pagination";
 import SearchBar from "../SearchBar/SearchBar";
 import SortModal from "../SortModal/SortModal";
-import fileTypesData from "../../data/fileTypes.json";
+import usePaginationAndSorting from "../../utils/usePaginationAndSorting";
 import styles from "./Files.module.css";
+import { fetchFiles, setSearchTerm, setSelectedFiles, deleteFiles, setSortOption, setSortOrder, setSelectedFileType } from "../../redux/actions/fileActions";
 
-const Files = ({
-  files,
-  searchTerm,
-  sortOption,
-  sortOrder,
-  selectedFiles,
-  currentPage,
-  selectedFileType,
-  selectedCategory,
-  isSortModalOpen,
-  setSortModalOpen,
-  handleCheckboxChange,
-  handleSelectAllChange,
-  handleDelete,
-  handleSortOptionChange,
-  handleSortOrderChange,
-  handleFileTypeSelect,
-  handleCategorySelect,
-  handleApplyFilters,
-  totalPages,
-  filteredFiles,
-}) => {
+const Files = ({ moduleName = null }) => {
+  const dispatch = useDispatch();
+  const {
+    files,
+    searchTerm,
+    selectedFiles,
+    currentPage,
+    loading,
+    error,
+    sortOption,
+    sortOrder,
+    selectedFileType,
+  } = useSelector((state) => state.files);
+
+  const [isSortModalOpen, setIsSortModalOpen] = useState(false);
+
+  const { paginatedFiles, totalPages, setCurrentPage, setSortOption: setSortOptionLocal, setSortOrder: setSortOrderLocal } = usePaginationAndSorting(files, 10);
+
+  useEffect(() => {
+    dispatch(fetchFiles(moduleName));
+  }, [dispatch, moduleName]);
+
+  const handleCheckboxChange = (fileId) => {
+    dispatch(
+      setSelectedFiles(
+        selectedFiles.includes(fileId)
+          ? selectedFiles.filter((id) => id !== fileId)
+          : [...selectedFiles, fileId]
+      )
+    );
+  };
+
+  const handleDelete = () => {
+    dispatch(deleteFiles(selectedFiles));
+  };
+
+  const handleSortOptionChange = (option) => {
+    dispatch(setSortOption(option));
+    setSortOptionLocal(option);
+  };
+
+  const handleSortOrderChange = (order) => {
+    dispatch(setSortOrder(order));
+    setSortOrderLocal(order);
+  };
+
+  const handleFileTypeSelect = (types) => {
+    dispatch(setSelectedFileType(types));
+  };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
     <div className={styles.container}>
-      <h1 className={"heading-1"}>Files</h1>
+      <h1 className={"heading-1"}>{moduleName ? moduleName : "Files"}</h1>
       <SearchBar
         searchTerm={searchTerm}
-        onSearchChange={(e) => handleSortOptionChange(e.target.value)}
-        onSelectAllChange={handleSelectAllChange}
-        isAllSelected={selectedFiles.length === filteredFiles.length}
+        onSearchChange={(e) => dispatch(setSearchTerm(e.target.value))}
+        onSelectAllChange={() => dispatch(setSelectedFiles(selectedFiles.length === files.length ? [] : files.map((file) => file.id)))}
+        isAllSelected={selectedFiles.length === files.length}
         onDelete={handleDelete}
-        onSortModalOpen={() => setSortModalOpen(true)}
+        onSortModalOpen={() => setIsSortModalOpen(true)}
       />
       <FileList
-        key={currentPage}
-        files={files}
+        files={paginatedFiles}
         selectedFiles={selectedFiles}
         onCheckboxChange={handleCheckboxChange}
       />
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
-        onPageChange={(page) => handleSortOptionChange(page)}
+        onPageChange={(page) => dispatch(setCurrentPage(page))}
       />
-      {isSortModalOpen && (
-        <SortModal
-          isOpen={isSortModalOpen}
-          onClose={() => setSortModalOpen(false)}
-          onSortOptionChange={handleSortOptionChange}
-          onSortOrderChange={handleSortOrderChange}
-          onFileTypeSelect={handleFileTypeSelect}
-          onCategorySelect={handleCategorySelect}
-          selectedFileType={selectedFileType}
-          selectedCategory={selectedCategory}
-          onApplyFilters={handleApplyFilters}
-          displayOptions={["Ascending", "Descending"]}
-          fileTypes={fileTypesData.fileTypes}
-          sortOrder={sortOrder}
-        />
-      )}
+      <SortModal
+        isOpen={isSortModalOpen}
+        onClose={() => setIsSortModalOpen(false)}
+        displayOptions={["Ascending", "Descending"]}
+        fileTypes={["PDF", "DOC", "XLS"]}
+        onSortOptionChange={handleSortOptionChange}
+        onSortOrderChange={handleSortOrderChange}
+        onFileTypeSelect={handleFileTypeSelect}
+        selectedFileType={selectedFileType}
+        sortOrder={sortOrder}
+      />
     </div>
   );
 };
 
-export default withFiles(Files);
+export default Files;
