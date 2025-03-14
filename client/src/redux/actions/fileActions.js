@@ -17,22 +17,16 @@ import {
 
 import moduleFilesData from '../../data/moduleFilesData.json';
 
-// Fetch files for a specific module or all files
-export const fetchFiles = (moduleName) => {
+// Fetch files (supports fetching all files or files for a specific module)
+export const fetchFiles = (moduleName = null) => {
   return async (dispatch) => {
     dispatch(fetchFilesRequest());
     try {
-      // Simulate an API call with a delay
       const response = await new Promise((resolve) => {
         setTimeout(() => {
-          let data = [];
-          if (moduleName) {
-            data = moduleFilesData[moduleName] || [];
-          } else {
-            data = Object.values(moduleFilesData).flat();
-          }
-          console.log("Fetched Data:", data); // Debugging
-          resolve(data);
+          // Filter files by moduleName if provided
+          const files = moduleName ? moduleFilesData[moduleName] || [] : Object.values(moduleFilesData).flat();
+          resolve(files);
         }, 1000);
       });
       dispatch(fetchFilesSuccess(response));
@@ -40,20 +34,19 @@ export const fetchFiles = (moduleName) => {
       dispatch(fetchFilesFailure(error.message));
     }
   };
-}
+};
 
 // Delete files
 export const deleteFiles = (fileIds) => {
   return async (dispatch) => {
     dispatch(deleteFilesRequest());
     try {
-      // Simulate an API call with a delay
       await new Promise((resolve) => {
         setTimeout(() => {
           resolve();
-          dispatch(deleteFilesSuccess(fileIds));
         }, 1000);
       });
+      dispatch(deleteFilesSuccess(fileIds));
     } catch (error) {
       dispatch(deleteFilesFailure(error.message));
     }
@@ -122,4 +115,4 @@ export const setSelectedFileType = (type) => ({
 export const setSelectedCategory = (category) => ({
   type: SET_SELECTED_CATEGORY,
   payload: category,
-});
+})
