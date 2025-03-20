@@ -8,7 +8,7 @@ const SortModal = ({
   isOpen,
   onClose,
   displayOptions,
-  fileTypes,
+  fileTypes,  
   onSortOptionChange,
   onSortOrderChange,
   onFileTypeSelect,

@@ -6,7 +6,15 @@ import SearchBar from "../SearchBar/SearchBar";
 import SortModal from "../SortModal/SortModal";
 import usePaginationAndSorting from "../../utils/usePaginationAndSorting";
 import styles from "./Files.module.css";
-import { fetchFiles, setSearchTerm, setSelectedFiles, deleteFiles, setSortOption, setSortOrder, setSelectedFileType } from "../../redux/actions/fileActions";
+import {
+  fetchFiles,
+  setSearchTerm,
+  setSelectedFiles,
+  deleteFiles,
+  setSortOption,
+  setSortOrder,
+  setSelectedFileType,
+} from "../../redux/actions/fileActions";
 
 const Files = ({ moduleName = null }) => {
   const dispatch = useDispatch();
@@ -24,7 +32,13 @@ const Files = ({ moduleName = null }) => {
 
   const [isSortModalOpen, setIsSortModalOpen] = useState(false);
 
-  const { paginatedFiles, totalPages, setCurrentPage, setSortOption: setSortOptionLocal, setSortOrder: setSortOrderLocal } = usePaginationAndSorting(files, 10);
+  const {
+    paginatedFiles,
+    totalPages,
+    setCurrentPage,
+    setSortOption: setSortOptionLocal,
+    setSortOrder: setSortOrderLocal,
+  } = usePaginationAndSorting(files, 10);
 
   useEffect(() => {
     dispatch(fetchFiles(moduleName));
@@ -67,7 +81,15 @@ const Files = ({ moduleName = null }) => {
       <SearchBar
         searchTerm={searchTerm}
         onSearchChange={(e) => dispatch(setSearchTerm(e.target.value))}
-        onSelectAllChange={() => dispatch(setSelectedFiles(selectedFiles.length === files.length ? [] : files.map((file) => file.id)))}
+        onSelectAllChange={() =>
+          dispatch(
+            setSelectedFiles(
+              selectedFiles.length === files.length
+                ? []
+                : files.map((file) => file.id)
+            )
+          )
+        }
         isAllSelected={selectedFiles.length === files.length}
         onDelete={handleDelete}
         onSortModalOpen={() => setIsSortModalOpen(true)}

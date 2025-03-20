@@ -1,5 +1,5 @@
 /* File.module.css */
-@import '../../styles/variables.module.css';
+@import "../../styles/variables.module.css";
 
 .wrapper {
   position: relative;
@@ -15,7 +15,7 @@
   border-radius: var(--radius-small);
   padding: var(--spacing-medium);
   position: relative;
-  z-index: 2;
+  z-index: 1; /* Ensure the file container is above other content */
   background-color: var(--color-white);
   height: auto;
   box-shadow: rgba(149, 157, 165, 0.1) 0px 2px 4px;
@@ -106,15 +106,52 @@
   opacity: 1;
 }
 
-/* File.module.css */
-.deleteButton {
+.menuContainer {
+  position: relative;
+}
+
+.menuButton {
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
   margin-left: var(--spacing-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.deleteButton:hover {
+.menuButton:hover {
   opacity: 0.7;
+}
+
+.menuPopup {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  background-color: var(--color-white);
+  border-radius: var(--radius-small);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-small);
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-small);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-xs) var(--spacing-small);
+  color: var(--color-dark-2);
+  font-size: var(--font-size-small);
+}
+
+.menuItem:hover {
+  background-color: var(--color-text);
+  border-radius: 4px;
 }

@@ -116,6 +116,7 @@
 
 .dropdownItem:hover {
   background-color: var(--color-text);
+  
 }
 
 .checkbox,
@@ -177,10 +178,10 @@
 
 .modalFooter {
   display: flex;
-  justify-content: flex-end; /* Aligns the button to the right */
+  justify-content: flex-end;
   width: 100%;
-  margin-top: auto; /* Pushes the footer to the bottom */
-  padding-top: var(--spacing-small); /* Adds some spacing above the button */
+  margin-top: auto;
+  padding-top: var(--spacing-small);
 }
 
 .clearButton {

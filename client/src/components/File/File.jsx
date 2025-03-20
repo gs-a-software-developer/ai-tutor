@@ -1,7 +1,7 @@
 // File.jsx
 import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
-import { CaretCircleDown, CaretCircleUp, Video, FileText, Image, Trash } from "@phosphor-icons/react";
+import { CaretCircleDown, CaretCircleUp, Video, FileText, Image, Trash, DownloadSimple, DotsThreeVertical } from "@phosphor-icons/react";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import styles from "./File.module.css";
 
@@ -55,20 +55,40 @@ const DropdownButton = ({ isOpen, onClick }) => (
 
 // Main File Component
 const File = React.memo(({ file, onSelect, onDelete }) => {
+  console.log("onDelete prop:", onDelete); // Debugging
+
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [isModalOpen, setModalOpen] = useState(false); // State for modal visibility
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleDropdown = useCallback(() => {
     setDropdownOpen((prev) => !prev);
   }, []);
 
+  const handleMenuClick = useCallback((e) => {
+    e.stopPropagation();
+    setMenuOpen((prev) => !prev);
+  }, []);
+
   const handleDeleteClick = useCallback((e) => {
     e.stopPropagation();
     setModalOpen(true);
+    setMenuOpen(false);
+  }, []);
+
+  const handleDownloadClick = useCallback((e) => {
+    e.stopPropagation();
+    // Implement download functionality here
+    setMenuOpen(false);
   }, []);
 
   const handleConfirmDelete = useCallback(() => {
-    onDelete(file.id);
+    console.log("Deleting file with ID:", file.id); // Debugging
+    if (typeof onDelete === "function") {
+      onDelete(file.id);
+    } else {
+      console.error("onDelete is not a function");
+    }
     setModalOpen(false);
   }, [file.id, onDelete]);
 
@@ -93,9 +113,23 @@ const File = React.memo(({ file, onSelect, onDelete }) => {
           <FileTags tags={tags} />
         </div>
         <div className={styles.rightSection}>
-          <button onClick={handleDeleteClick} className={styles.deleteButton} aria-label="Delete file">
-            <Trash size={20} weight="fill" color="rgba(218, 38, 62, 0.7)" />
-          </button>
+          <div className={styles.menuContainer}>
+            <button onClick={handleMenuClick} className={styles.menuButton} aria-label="File options">
+              <DotsThreeVertical size={16} color="var(--color-muted)" />
+            </button>
+            {isMenuOpen && (
+              <div className={styles.menuPopup}>
+                <button onClick={handleDownloadClick} className={styles.menuItem}>
+                  <DownloadSimple size={16} weight="fill" color={ICON_COLOR} />
+                  <span>Download</span>
+                </button>
+                <button onClick={handleDeleteClick} className={styles.menuItem}>
+                  <Trash size={16} weight="fill" color="rgba(218, 38, 62, 0.7)" />
+                  <span>Delete</span>
+                </button>
+              </div>
+            )}
+          </div>
           <DropdownButton isOpen={isDropdownOpen} onClick={toggleDropdown} />
         </div>
       </div>
@@ -130,12 +164,11 @@ File.propTypes = {
     description: PropTypes.string.isRequired,
   }).isRequired,
   onSelect: PropTypes.func,
-  onDelete: PropTypes.func,
+  onDelete: PropTypes.func.isRequired, // Ensure onDelete is required
 };
 
 File.defaultProps = {
   onSelect: () => {},
-  onDelete: () => {},
 };
 
 export default File;
