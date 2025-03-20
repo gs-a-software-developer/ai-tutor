@@ -1,3 +1,4 @@
+// Files;
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import FileList from "../FileList/FileList";
@@ -6,7 +7,6 @@ import SearchBar from "../SearchBar/SearchBar";
 import SortModal from "../SortModal/SortModal";
 import usePaginationAndSorting from "../../utils/usePaginationAndSorting";
 import styles from "./Files.module.css";
-<<<<<<< HEAD
 import {
   fetchFiles,
   setSearchTerm,
@@ -16,9 +16,6 @@ import {
   setSortOrder,
   setSelectedFileType,
 } from "../../redux/actions/fileActions";
-=======
-import { fetchFiles, setSearchTerm, setSelectedFiles, deleteFiles, setSortOption, setSortOrder, setSelectedFileType } from "../../redux/actions/fileActions";
->>>>>>> a8c7729d1137d4a01af5466ada543a823be9b526
 
 const Files = ({ moduleName = null }) => {
   const dispatch = useDispatch();
@@ -36,7 +33,6 @@ const Files = ({ moduleName = null }) => {
 
   const [isSortModalOpen, setIsSortModalOpen] = useState(false);
 
-<<<<<<< HEAD
   const {
     paginatedFiles,
     totalPages,
@@ -44,9 +40,6 @@ const Files = ({ moduleName = null }) => {
     setSortOption: setSortOptionLocal,
     setSortOrder: setSortOrderLocal,
   } = usePaginationAndSorting(files, 10);
-=======
-  const { paginatedFiles, totalPages, setCurrentPage, setSortOption: setSortOptionLocal, setSortOrder: setSortOrderLocal } = usePaginationAndSorting(files, 10);
->>>>>>> a8c7729d1137d4a01af5466ada543a823be9b526
 
   useEffect(() => {
     dispatch(fetchFiles(moduleName));
@@ -85,23 +78,17 @@ const Files = ({ moduleName = null }) => {
 
   return (
     <div className={styles.container}>
-      <h1 className={"heading-1"}>{moduleName ? moduleName : "Files"}</h1>
+      <h1 className="heading-1">{moduleName || "Files"}</h1>
       <SearchBar
         searchTerm={searchTerm}
         onSearchChange={(e) => dispatch(setSearchTerm(e.target.value))}
-<<<<<<< HEAD
         onSelectAllChange={() =>
           dispatch(
             setSelectedFiles(
-              selectedFiles.length === files.length
-                ? []
-                : files.map((file) => file.id)
+              selectedFiles.length === files.length ? [] : files.map((file) => file.id)
             )
           )
         }
-=======
-        onSelectAllChange={() => dispatch(setSelectedFiles(selectedFiles.length === files.length ? [] : files.map((file) => file.id)))}
->>>>>>> a8c7729d1137d4a01af5466ada543a823be9b526
         isAllSelected={selectedFiles.length === files.length}
         onDelete={handleDelete}
         onSortModalOpen={() => setIsSortModalOpen(true)}
@@ -131,8 +118,4 @@ const Files = ({ moduleName = null }) => {
   );
 };
 
-<<<<<<< HEAD
 export default Files;
-=======
-export default Files;
->>>>>>> a8c7729d1137d4a01af5466ada543a823be9b526
