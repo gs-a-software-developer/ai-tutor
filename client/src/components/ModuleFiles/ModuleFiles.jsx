@@ -4,11 +4,21 @@ import { useNavigate, useParams } from "react-router-dom";
 import FileList from "../FileList/FileList";
 import Pagination from "../Pagination/Pagination";
 import SearchBar from "../SearchBar/SearchBar";
-import SortModal from "../SortModal/SortModal"; 
+import SortModal from "../SortModal/SortModal";
 import { CaretLeft } from "@phosphor-icons/react";
 import usePaginationAndSorting from "../../utils/usePaginationAndSorting";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import styles from "./ModuleFiles.module.css";
-import { fetchFiles, setSearchTerm, setSelectedFiles, deleteFiles, setSortOption, setSortOrder, setSelectedFileType } from "../../redux/actions/fileActions";
+
+import {
+  fetchFiles,
+  setSearchTerm,
+  setSelectedFiles,
+  deleteFiles,
+  setSortOption,
+  setSortOrder,
+  setSelectedFileType,
+} from "../../redux/actions/fileActions";
 
 const ModuleFiles = () => {
   const dispatch = useDispatch();
@@ -28,7 +38,8 @@ const ModuleFiles = () => {
 
   const [isSortModalOpen, setIsSortModalOpen] = useState(false);
 
-  const { paginatedFiles, totalPages, setCurrentPage } = usePaginationAndSorting(files, 10);
+  const { paginatedFiles, totalPages, setCurrentPage } =
+    usePaginationAndSorting(files, 10);
 
   // Fetch files for the specific module
   useEffect(() => {
@@ -73,7 +84,7 @@ const ModuleFiles = () => {
     dispatch(setSelectedFileType(types));
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner />;
   if (error) return <p>Error: {error}</p>;
 
   return (
@@ -90,7 +101,15 @@ const ModuleFiles = () => {
       <SearchBar
         searchTerm={searchTerm}
         onSearchChange={(e) => dispatch(setSearchTerm(e.target.value))}
-        onSelectAllChange={() => dispatch(setSelectedFiles(selectedFiles.length === files.length ? [] : files.map((file) => file.id)))}
+        onSelectAllChange={() =>
+          dispatch(
+            setSelectedFiles(
+              selectedFiles.length === files.length
+                ? []
+                : files.map((file) => file.id)
+            )
+          )
+        }
         isAllSelected={selectedFiles.length === files.length}
         onDelete={handleDelete}
         onSortModalOpen={handleSortModalOpen}

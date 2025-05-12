@@ -164,7 +164,7 @@ File.propTypes = {
     description: PropTypes.string.isRequired,
   }).isRequired,
   onSelect: PropTypes.func,
-  onDelete: PropTypes.func.isRequired, // Ensure onDelete is required
+  onDelete: PropTypes.func.isRequired, 
 };
 
 File.defaultProps = {

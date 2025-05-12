@@ -7,7 +7,7 @@ import Authentication from "../pages/Authentication/Authentication";
 import Welcome from "../components/Welcome/Welcome";
 import Navbar from "../components/Navbar/Navbar";
 import Role from "../components/Role/Role";
-import UploadFiles from "../components/UploadFiles/UploadFiles"; // Shared sidebar component
+import UploadFiles from "../components/UploadFiles/UploadFiles";
 import Profile from "../pages/Profile/Profile";
 import Settings from "../pages/Settings/Settings";
 import Files from "../components/Files/Files";
@@ -16,6 +16,18 @@ import styles from "./Layout.module.css";
 
 import ModuleFiles from "../components/ModuleFiles/ModuleFiles";
 import Contents from "../pages/Contents/Contents";
+
+// Function to determine if sidebar should be visible
+const shouldShowSidebar = (path) => {
+  const hideSidebarPaths = [
+    "/ai-tutor/files",
+    "/ai-tutor/modules",
+    "/ai-tutor/modules/"
+  ];
+  
+  return !hideSidebarPaths.some(hidePath => 
+    path.startsWith(hidePath) && !path.startsWith("/ai-tutor/modules/"));
+};
 
 // Function to determine sidebar content
 const getSidebarComponent = (path) => {
@@ -30,13 +42,14 @@ const Layout = () => {
   const { pathname } = useLocation();
   const isAuthPage = pathname.startsWith("/authentication");
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const showSidebar = shouldShowSidebar(pathname);
 
   return (
     <div className={styles.container}>
       <div className={styles.navbar}>
         {isAuthPage ? <Welcome /> : <Navbar />}
       </div>
-      <div className={styles.center}>
+      <div className={`${styles.center} ${!showSidebar ? styles.fullWidth : ''}`}>
         <div className={styles.content}>
           <Routes>
             {/* Authentication Routes */}
@@ -57,7 +70,11 @@ const Layout = () => {
             <Route path="/ai-tutor/settings" element={<Settings />}/>
           </Routes>
         </div>
-        <div className={styles.sidebar}>{getSidebarComponent(pathname)}</div>
+        {showSidebar && (
+          <div className={styles.sidebar}>
+            {getSidebarComponent(pathname)}
+          </div>
+        )}
       </div>
     </div>
   );

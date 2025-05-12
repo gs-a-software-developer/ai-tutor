@@ -5,6 +5,7 @@ import FileList from "../FileList/FileList";
 import Pagination from "../Pagination/Pagination";
 import SearchBar from "../SearchBar/SearchBar";
 import SortModal from "../SortModal/SortModal";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import usePaginationAndSorting from "../../utils/usePaginationAndSorting";
 import styles from "./Files.module.css";
 import {
@@ -73,7 +74,7 @@ const Files = ({ moduleName = null }) => {
     dispatch(setSelectedFileType(types));
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner />;
   if (error) return <p>Error: {error}</p>;
 
   return (
